@@ -1,0 +1,101 @@
+Based on the requirements and assumptions, the following core classes, functions, and methods will be necessary:
+
+1. `DocumentProcessor`: This class will handle the processing of the input document or text. It will have methods for uploading a file, entering text manually, and summarizing the content.
+
+2. `SolutionProposer`: This class will propose solutions based on the summarized content. It will have methods for generating brief and detailed orientation axes.
+
+3. `ResultPresenter`: This class will present the generated result to the user. It will have methods for displaying the result in an editable text format and downloading it as a PDF or Word document.
+
+4. `OpenAIAPI`: This class will interact with the OpenAI API. It will have methods for sending requests to the API and processing the responses.
+
+Now, let's start with the entrypoint file, `main.py`.
+
+main.py
+```python
+from document_processor import DocumentProcessor
+from solution_proposer import SolutionProposer
+from result_presenter import ResultPresenter
+
+def main():
+    # Create instances of the core classes
+    document_processor = DocumentProcessor()
+    solution_proposer = SolutionProposer()
+    result_presenter = ResultPresenter()
+
+    # Process the input document or text
+    document_processor.process_input()
+
+    # Propose solutions based on the summarized content
+    solution_proposer.propose_solutions(document_processor.summarized_content)
+
+    # Present the generated result to the user
+    result_presenter.present_result(solution_proposer.generated_result)
+
+if __name__ == "__main__":
+    main()
+```
+
+Next, let's move on to the `DocumentProcessor` class in `document_processor.py`.
+
+document_processor.py
+```python
+import openai_api
+
+class DocumentProcessor:
+    def __init__(self):
+        self.summarized_content = ""
+
+    def process_input(self):
+        # Code for uploading a file or entering text manually goes here
+
+    def summarize_content(self, content):
+        # Use the OpenAI API to summarize the content
+        self.summarized_content = openai_api.summarize(content)
+```
+
+Next, the `SolutionProposer` class in `solution_proposer.py`.
+
+solution_proposer.py
+```python
+import openai_api
+
+class SolutionProposer:
+    def __init__(self):
+        self.generated_result = ""
+
+    def propose_solutions(self, summarized_content):
+        # Use the OpenAI API to generate brief or detailed orientation axes
+        self.generated_result = openai_api.generate_orientation_axes(summarized_content)
+```
+
+Next, the `ResultPresenter` class in `result_presenter.py`.
+
+result_presenter.py
+```python
+class ResultPresenter:
+    def present_result(self, result):
+        # Code for displaying the result in an editable text format and downloading it as a PDF or Word document goes here
+```
+
+Finally, the `OpenAIAPI` class in `openai_api.py`.
+
+openai_api.py
+```python
+import openai
+
+class OpenAIAPI:
+    def summarize(self, content):
+        # Code for sending a request to the OpenAI API to summarize the content goes here
+
+    def generate_orientation_axes(self, summarized_content):
+        # Code for sending a request to the OpenAI API to generate orientation axes goes here
+```
+
+The `requirements.txt` file would include the following dependencies:
+
+requirements.txt
+```
+openai
+```
+
+This architecture should cover all parts of the tool as described in the requirements and assumptions.
